@@ -1,0 +1,12 @@
+div.cities {
+    background-color: black;
+    color: white;
+    margin: 20px 0 20px 0;
+    padding: 20px;
+}
+
+span.country{
+	color: red;
+	margin: 3px;
+	background-color: #00FF00;
+}
