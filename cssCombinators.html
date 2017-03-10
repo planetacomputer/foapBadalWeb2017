@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p{
+	 background-color: green;
+}
+div p{
+	background-color: blue;
+}
+div > p {
+    background-color: yellow;
+}
+div + p {
+    background-color: magenta;
+}
+</style>
+</head>
+<body>
+
+<p>Paragraph 0. Not in a div.</p>
+<div>
+  <p>Paragraph 1 in the div.</p>
+  <p>Paragraph 2 in the div.</p>
+  <span><p>Paragraph 3 in the div.</p></span>
+</div>
+<p>Paragraph 4. Not in a div.</p>
+<p>Paragraph 5. Not in a div.</p>
+</body>
+</html>
