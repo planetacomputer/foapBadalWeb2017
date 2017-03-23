@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo" contenteditable="true">212</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+	var a = parseInt(document.getElementById("demo").innerHTML);
+	//parseInt("40 years")alert(typeof(a));
+	if (a % 2 == 0) {
+		alert("Es parell");
+	} 
+	else {
+		alert("Es senar");
+	}
+	
+	//alert(numero);
+}
+</script>
+
+</body>
+</html>

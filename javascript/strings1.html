@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p contenteditable="true" id="p1">Please locate where 'locate' occurs!.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("p1").innerHTML;
+    var pos = str.indexOf("sdafasdfasd");
+    document.getElementById("demo").innerHTML = pos;
+    //alert(str[str.length-1]);
+}
+</script>
+
+</body>
+</html>
