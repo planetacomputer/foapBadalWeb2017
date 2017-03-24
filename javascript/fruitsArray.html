@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The pop method returnes the removed item.</p>
+
+<button id="boto" onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var fruits2 = [];
+document.getElementById("demo").innerHTML = fruits;
+var a = 0;
+var mida = fruits.length;
+function myFunction() {
+	if(fruits.length > 0){
+		fruits2.push(fruits.pop());
+		document.getElementById("demo").innerHTML = fruits;
+    	document.getElementById("demo2").innerHTML = fruits2;
+    }
+
+    if(fruits.length == 0){
+    	document.getElementById("boto").style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

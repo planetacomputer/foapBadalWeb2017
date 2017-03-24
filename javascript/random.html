@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<style type="text/css">
+	#demo{
+		width: 1.5em;	
+	}
+</style>
+</head>
+<body class="w3-container">
+
+<h1>JavaScript Math.random()</h1>
+
+<p>Math.random() returns a random number between 0 and 1:</p>
+<button class="w3-button w3-ripple" onclick="aleatori()">Aleatori</button>
+<div id="demo" class="w3-badge w3-jumbo w3-green"></div>
+<div id="intents" class="w3-panel w3-yellow"></div>
+<div id="demo2" class="w3-panel w3-pale-red w3-leftbar w3-border-grey w3-hover-border-green w3-hover-text-maroon"></div>
+<div id="min" class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+
+</div>
+<div id="max" class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-red">
+</div>
+<div id="ocurrencies" class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-yellow">
+
+</div>
+<script>
+var a = [];
+var ocurrencies = Array(10).fill(0);
+
+function aleatori(){
+  var num = Math.floor(Math.random() * 10) + 1;
+  a.unshift(parseInt(num));
+  document.getElementById("demo").innerHTML = num;
+  document.getElementById("demo2").innerHTML = a.join(" | ");
+  document.getElementById("intents").innerHTML = a.length + " intents";
+  var aux = a.slice();
+  ocurrencies[num-1] += 1; 
+  //var aux = a;
+  aux.sort(function(a, b){return a-b});
+  document.getElementById("min").innerHTML = aux[0];
+  document.getElementById("max").innerHTML = aux[aux.length-1];
+  document.getElementById("ocurrencies").innerHTML = ocurrencies;
+}
+</script>
+
+</body>
+</html>
