@@ -16,8 +16,16 @@
 <p>Math.random() returns a random number between 0 and 1:</p>
 <button class="w3-button w3-ripple" onclick="aleatori()">Aleatori</button>
 <div id="demo" class="w3-badge w3-jumbo w3-green"></div>
+
+<!-- Nombre d'intents -->
 <div id="intents" class="w3-panel w3-yellow"></div>
+
+<!-- Llista d'intents -->
 <div id="demo2" class="w3-panel w3-pale-red w3-leftbar w3-border-grey w3-hover-border-green w3-hover-text-maroon"></div>
+
+<!-- Llista d'hores dates -->
+<div id="dates" class="w3-panel w3-pale-red w3-leftbar w3-border-grey w3-hover-border-green w3-hover-text-maroon"></div>
+
 <div id="min" class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
 
 </div>
@@ -29,10 +37,16 @@
 <script>
 var a = [];
 var ocurrencies = Array(10).fill(0);
+var dates = [];
 
 function aleatori(){
   var num = Math.floor(Math.random() * 10) + 1;
   a.unshift(parseInt(num));
+  //Associem data
+  var ara = new Date();
+  var dataClick = ara.getHours() + ":" + ara.getMinutes() + ":" + ('0' + ara.getSeconds()).slice(-2);
+  dates.unshift(dataClick);
+
   document.getElementById("demo").innerHTML = num;
   document.getElementById("demo2").innerHTML = a.join(" | ");
   document.getElementById("intents").innerHTML = a.length + " intents";
@@ -43,6 +57,7 @@ function aleatori(){
   document.getElementById("min").innerHTML = aux[0];
   document.getElementById("max").innerHTML = aux[aux.length-1];
   document.getElementById("ocurrencies").innerHTML = ocurrencies;
+  document.getElementById("dates").innerHTML = dates.join(" | ");
 }
 </script>
 
