@@ -35,19 +35,44 @@
 
 </div>
 <script>
+//Array d'objectes que representen els intents
 var a = [];
+//Array que mesura les frequencies de cada numero
 var ocurrencies = Array(10).fill(0);
-var dates = [];
 
+/*Constructor de l'objecte que encapsula les propietats de 
+  cada intent */
+function Intent(numero, data){
+	this.numero = numero;
+	this.data = data;
+	//Com volem mostrar l'objecte
+	this.toString = function(){
+    	return "<div class='w3-tag w3-round w3-brown w3-center'>" + this.numero + "</div>-" + leadingZero(this.data.getHours()) + ":" + 
+    	leadingZero(this.data.getMinutes()) + ":" + leadingZero(this.data.getSeconds());
+	}
+}
+
+//Com volem mostrar l'objecte estenent el prototype
+/*Intent.prototype.toString = function()
+{
+    return this.numero + "-" + this.data;
+}*/
+
+//Hores, minuts i seconds en dues xifres 
+function leadingZero(temps){
+	return ('0' + temps).slice(-2);
+}
+
+//Crea un intent a cada click
 function aleatori(){
   var num = Math.floor(Math.random() * 10) + 1;
-  a.unshift(parseInt(num));
-  //Associem data
   var ara = new Date();
-  var dataClick = ara.getHours() + ":" + ara.getMinutes() + ":" + ('0' + ara.getSeconds()).slice(-2);
-  dates.unshift(dataClick);
+  var inten = new Intent(num, ara);
 
+  //Introduim objecte a l'array pel davant
+  a.unshift(inten);
   document.getElementById("demo").innerHTML = num;
+  //Mostrem l'array d'objectes Intent
   document.getElementById("demo2").innerHTML = a.join(" | ");
   document.getElementById("intents").innerHTML = a.length + " intents";
   var aux = a.slice();
@@ -57,7 +82,6 @@ function aleatori(){
   document.getElementById("min").innerHTML = aux[0];
   document.getElementById("max").innerHTML = aux[aux.length-1];
   document.getElementById("ocurrencies").innerHTML = ocurrencies;
-  document.getElementById("dates").innerHTML = dates.join(" | ");
 }
 </script>
 
