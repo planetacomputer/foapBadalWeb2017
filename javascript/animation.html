@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+  color: white;
+  text-align: center;
+  vertical-align: center;
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove(350, 0)">Baixa</button>
+<button onclick="myMove(0, 1)">Puja</button>
+</p> 
+
+<div id ="container">
+<div id ="animate"></div>
+</div>
+
+<script>
+function myMove(x, y) {
+  var elem = document.getElementById("animate"); 
+  if(y == 1){
+    var pos = 0;
+  }
+  else{
+    var pos = 350;
+  }
+  //var pos = 350-x;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == Math.abs(x-350)) {
+      clearInterval(id);
+    } else {
+      if(y == 1){
+      	pos++; 
+      }
+      else{
+      	pos--;
+      }
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px';
+      elem.innerHTML = elem.style.top + "-" + elem.style.left;
+     
+    }
+  }
+}
+</script>
+
+</body>
+</html>
