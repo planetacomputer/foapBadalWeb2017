@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	div{
+    	background-color:#D94A38;
+        width:120px;
+        height:20px;
+        padding:40px;
+    }
+</style>
+</head>
+<body>
+
+<div id="capsa">Mouse Over Me</div>
+<span id="counter"></span>
+
+<script>
+counter = 0;
+document.getElementById("capsa").onmouseover = 
+	function () {
+		this.innerHTML = "Thank You";
+        this.style.backgroundColor = "#FF0";
+        document.getElementById("counter").innerHTML = ++counter;
+	};
+
+document.getElementById("capsa").onmouseout = 
+	function () {
+		this.innerHTML = "Mouse over me";
+        this.style.backgroundColor = "#D94A38";
+	};
+</script>
+
+</body>
+</html> 

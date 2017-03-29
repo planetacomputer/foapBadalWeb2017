@@ -14,7 +14,7 @@
 <h1>JavaScript Math.random()</h1>
 
 <p>Math.random() returns a random number between 0 and 1:</p>
-<button class="w3-button w3-ripple" onclick="aleatori()">Aleatori</button>
+<button id="boto" class="w3-button w3-ripple">Aleatori</button>
 <div id="demo" class="w3-badge w3-jumbo w3-green"></div>
 
 <!-- Nombre d'intents -->
@@ -40,16 +40,34 @@ var a = [];
 //Array que mesura les frequencies de cada numero
 var ocurrencies = Array(10).fill(0);
 
+//Assignem funcio aleatori al boto
+document.getElementById("boto").addEventListener("click", aleatori);
+
 /*Constructor de l'objecte que encapsula les propietats de 
   cada intent */
-function Intent(numero, data){
+function Intent(numero, data, coordX, coordY){
 	this.numero = numero;
 	this.data = data;
+	this.coordX = coordX;
+	this.coordY = coordY;
 	//Com volem mostrar l'objecte
 	this.toString = function(){
     	return "<div class='w3-tag w3-round w3-brown w3-center'>" + this.numero + "</div>-" + leadingZero(this.data.getHours()) + ":" + 
-    	leadingZero(this.data.getMinutes()) + ":" + leadingZero(this.data.getSeconds());
+    	leadingZero(this.data.getMinutes()) + ":" + leadingZero(this.data.getSeconds())
+    	+ "---(" + this.coordX + ", " + this.coordY + ")";
 	}
+
+}
+
+//Com volem mostrar l'objecte estenent el prototype
+/*Intent.prototype.toString = function()
+{
+    return this.numero + "-" + this.data;
+}*/
+
+function compare(a, b) {
+  //console.log(typeof(a.numero));
+  return a.numero-b.numero;
 }
 
 //Com volem mostrar l'objecte estenent el prototype
@@ -64,10 +82,13 @@ function leadingZero(temps){
 }
 
 //Crea un intent a cada click
-function aleatori(){
+function aleatori(evento){
+  var boto = document.getElementById("boto");
   var num = Math.floor(Math.random() * 10) + 1;
   var ara = new Date();
-  var inten = new Intent(num, ara);
+  var inten = new Intent(num, ara, evento.clientX-boto.offsetLeft, Math.abs(boto.offsetTop-evento.clientY));
+  console.log(boto.offsetLeft);
+  console.log(Math.abs(boto.offsetTop));
 
   //Introduim objecte a l'array pel davant
   a.unshift(inten);
@@ -75,12 +96,12 @@ function aleatori(){
   //Mostrem l'array d'objectes Intent
   document.getElementById("demo2").innerHTML = a.join(" | ");
   document.getElementById("intents").innerHTML = a.length + " intents";
-  var aux = a.slice();
   ocurrencies[num-1] += 1; 
   //var aux = a;
-  aux.sort(function(a, b){return a-b});
+  var aux = a.slice();
+  aux.sort(compare);
   document.getElementById("min").innerHTML = aux[0];
-  document.getElementById("max").innerHTML = aux[aux.length-1];
+  document.getElementById("max").innerHTML = aux[a.length-1];
   document.getElementById("ocurrencies").innerHTML = ocurrencies;
 }
 </script>
