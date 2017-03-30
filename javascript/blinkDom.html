@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#div1{
+			height: 60px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="div1">
+	<p id="p1">This is a paragraph.</p>
+	<p id="p2">This is another paragraph.</p>
+</div>
+<button id="boto">Aturar</button>
+<script>
+
+document.getElementById("boto").addEventListener("click", function(){
+		clearInterval(inter);
+	})
+
+function blink(){
+	if(document.getElementById("p1")){
+		eliminarElement()
+	}
+	else{
+		crearElement();
+	}
+}
+
+function crearElement(){
+	var para = document.createElement("p");
+	para.id = "p1";
+	var node = document.createTextNode("This is new.");
+	para.appendChild(node);
+	var element = document.getElementById("div1");
+	element.appendChild(para);
+}
+
+function eliminarElement(){
+	var parent = document.getElementById("div1");
+	var child = document.getElementById("p1");
+	parent.removeChild(child);
+}
+
+inter = setInterval(blink, 1000);
+</script>
+
+</body>
+</html>

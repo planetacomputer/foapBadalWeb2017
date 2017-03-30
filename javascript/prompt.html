@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to demonstrate the prompt box.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var total = 0;
+
+function myFunction() {
+	do{
+		var parcial = prompt("Introdueix el teu numero");
+		if(parcial){
+	    	total += parseInt(parcial);
+		}
+	    console.log(total);
+	}   
+	while(parcial != null);
+
+	document.getElementById("demo").innerHTML = total;
+}
+</script>
+
+</body>
+</html>

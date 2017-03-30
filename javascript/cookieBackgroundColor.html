@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="cookieLib.js"></script>
+	</head>
+	<body>
+		<div class="w3-container">
+			<div class="w3-panel w3-yellow">
+			  <h1 id="hexColor" contenteditable="true" class="w3-opacity">
+			  </h1>
+			</div>
+			<button id="boto" class="w3-button w3-purple">Purple</button>
+		</div>
+		<script>
+			var elementText = document.getElementById("hexColor");
+			document.body.style.backgroundColor = getCookie("colorPantalla");
+			elementText.innerHTML = document.body.style.backgroundColor;
+			document.getElementById("boto").addEventListener("click", canviarColorPantalla);
+			
+			function canviarColorPantalla(){
+				console.log("canviarColorPantalla");
+				setCookie("colorPantalla", elementText.innerHTML,30);
+				document.body.style.backgroundColor = elementText.innerHTML;
+			}
+		</script>
+	</body>
+</html>
