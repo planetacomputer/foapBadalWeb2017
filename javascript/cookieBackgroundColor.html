@@ -6,23 +6,25 @@
 	</head>
 	<body>
 		<div class="w3-container">
-			<div class="w3-panel w3-yellow">
-			  <h1 id="hexColor" contenteditable="true" class="w3-opacity">
-			  </h1>
-			</div>
+			<input type="color" id="hexColor" />
 			<button id="boto" class="w3-button w3-purple">Purple</button>
 		</div>
 		<script>
-			var elementText = document.getElementById("hexColor");
-			document.body.style.backgroundColor = getCookie("colorPantalla");
-			elementText.innerHTML = document.body.style.backgroundColor;
-			document.getElementById("boto").addEventListener("click", canviarColorPantalla);
-			
-			function canviarColorPantalla(){
-				console.log("canviarColorPantalla");
-				setCookie("colorPantalla", elementText.innerHTML,30);
-				document.body.style.backgroundColor = elementText.innerHTML;
-			}
+
+		document.getElementById("boto").addEventListener("click", canviarColorPantalla);
+
+		var elementText = document.getElementById("hexColor");
+		elementText.defaultValue = "#FFFFF0";
+		//NO ES POSSIBLE PERQUE DEFAULTVALUE NO ES ATTR DEL TAG
+		//elementText.setAttribute("defaultValue", "#FFF000");
+		document.body.style.backgroundColor = getCookie("colorPantalla");
+		//elementText.defaultValue = document.body.style.backgroundColor;
+		
+		function canviarColorPantalla(){
+			console.log("canviarColorPantalla");
+			setCookie("colorPantalla", elementText.value, 30);
+			document.body.style.backgroundColor = elementText.value;
+		}
 		</script>
 	</body>
 </html>
