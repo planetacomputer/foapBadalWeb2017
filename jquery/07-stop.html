@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+    $("#flip").click(function(){
+        var div1 = $("#div1");
+        div1.animate({left: '100px'}, 4000);
+        div1.animate({fontSize: '3em'}, "slow");
+
+    });
+    $("#stop").click(function(){
+        $("#div1").stop(true, false);
+    });
+});
+</script>
+ 
+<style> 
+#panel, #flip {
+    padding: 5px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #555;
+    color: white;
+    border: solid 1px #666;
+    border-radius: 3px;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+</head>
+<body>
+ 
+<button id="stop">Stop sliding</button>
+
+<div id="div1" style="background:#98bf21;height:100px;width:200px;position:relative;">HELLO</div>
+
+<div id="flip">Click per moure capsa</div>
+<div id="panel">Hello world!</div>
+
+</body>
+</html>

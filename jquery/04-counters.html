@@ -10,7 +10,7 @@ $(document).ready(function(){
     $("p").click(function(){
         //alert($(this).index());
         var indice = $(this).index();
-        elem[indice] = elem[indice] + 1;
+        elem[indice]++;
         $("p>span:eq(" + indice + ")").html(elem[indice]);
     });
 });

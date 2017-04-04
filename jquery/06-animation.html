@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.bloc{
+		left: 250px;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script> 
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $("div").toggleClass("bloc");
+    });
+});
+</script> 
+</head>
+<body>
+
+<button>Start Animation</button>
+
+<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
+
+<div style="position:absolute;height:100px;
+		width:100px;background:#98bf21;"></div>
+
+</body>
+</html>

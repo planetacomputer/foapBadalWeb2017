@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://192.168.1.175:81/javascript/April04/fruites.json"></script>
+</head>
+<body>
+	
+<script>
+	var arrFruites = JSON.parse(data);
+	var arrayLength = arrFruites.length;
+	$("body").append("<ol></ol>");
+	
+	for (var i = 0; i < arrayLength; i++) {
+		var element = $("<li></li>");
+    	$("ol").append(element);
+    	element.text(arrFruites[i]);
+	}
+</script>
+</body>
+</html>
