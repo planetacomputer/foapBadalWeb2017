@@ -14,6 +14,23 @@
 		border:1px solid #FF0000;
 		max-width: auto;
 		background-color: "pink";
+		position: relative;
+	}
+
+	table td span{
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		font-size: 40%;
+	}
+
+	table td div{
+		float: none;
+		color: black;
+	}
+
+	.blue{
+		color: blue;
 	}
 
 	div{
@@ -43,7 +60,7 @@
 				contador++;
 				var numero = contador;
 				console.log(numero);
-				var casella = $("<td>" + numero + "</td>");
+				var casella = $("<td><span>0</span><div>" + numero + "</div></td>");
 				fila.append(casella);
 				crearClick(casella, numero);
 			}
@@ -53,18 +70,22 @@
 	function crearClick(casella, numero){
 		casella.click(function(){
 			console.log("Hola el meu valor es " + numero);
-			casella.remove();
+			//casella.remove();
 		});
 
 		casella.hover(function(){
 	    	$(this).css("background-color", "yellow");
+	    	$(this).find('div').addClass("blue");
 	    	var a = parseInt(sumatori.text());
-	    	if(parseInt(casella.text()) % 2 == 0){
-	    		sumatori.text(a + parseInt(casella.text()));
-	    	}
-	    	console.log(sumatori.text());
+	    	//if(parseInt(casella.text()) % 2 == 0){
+	    	sumatori.text(a + parseInt(casella.find('div').text()));
+	    	//}
+	    	freqActual = parseInt(casella.find('span').text());
+	    	casella.find('span').text(freqActual + 1);
+	    	console.log(parseInt(casella.find('div').text()));
 	    }, function(){
 	    	$(this).css("background-color", "pink");
+	    	$(this).find('div').removeClass("blue");
 		});
 	}
 </script>
