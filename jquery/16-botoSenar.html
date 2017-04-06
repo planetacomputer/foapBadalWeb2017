@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="num"></div>
+	<button onclick="senar()">Senar</button>
+<script>
+	function senar(){
+		var a;
+		do{
+			a = Math.floor((Math.random() * 100) + 1);
+		}
+		while(a % 2 != 1);
+
+		document.getElementById("num").innerHTML = a;
+	}
+</script>
+</body>
+</html>

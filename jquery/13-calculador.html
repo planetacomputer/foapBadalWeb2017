@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div[id^="num"] {
+    		border: #CCC 1px solid;
+    		margin-bottom: 2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="num1" contenteditable="true">Numero1</div>
+	<div id="num2" contenteditable="true">Numero2</div>
+	<div id="res">Resultat</div>
+	<button onclick="suma()">+</button>
+	<button onclick="resta()">-</button>
+	<button onclick="multi()">*</button>
+	<button onclick="divisio()">/</button>
+<script>
+    var num1 = document.getElementById("num1");
+    var num2 = document.getElementById("num2");
+
+
+
+	num1.addEventListener("focus", function(){
+		this.innerHTML = "";
+	})
+
+	num1.addEventListener("keypress", function(e){
+		if (48 <= e.charCode && e.charCode <= 57){
+			console.log(e.charCode);
+			return false;
+		}
+	})
+
+	num2.addEventListener("focus", function(){
+		this.innerHTML = "";
+	})
+	function getNum1(){
+		return parseInt(num1.innerHTML);
+	}
+
+	function getNum2(){
+		return parseInt(num2.innerHTML);
+	}
+
+	function suma(){
+		var suma = getNum1() + getNum2();
+		res.innerHTML = suma;
+	}
+
+	function resta(){
+		var resta = getNum1() - getNum2();
+		res.innerHTML = resta;
+	}
+
+	function multi(){
+		var multi = getNum1() * getNum2();
+		res.innerHTML = multi;
+	}
+
+	function divisio(){
+		var divisio = getNum1() / getNum2();
+		res.innerHTML = divisio;
+	}
+
+</script>
+</body>
+</html>

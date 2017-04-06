@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="num"></div>
+<div id="arrOrd"></div>
+<div id="numLletres"></div>
+<script>
+	var a = ["un", "dos", "Tres", "quatre"];
+	document.getElementById("num").innerHTML = a.length;
+	document.getElementById("arrOrd").innerHTML = a.sort();
+	comptador = 0;
+	for (var i = 0; i < a.length; i++) {
+		comptador += a[i].length;
+	}
+	document.getElementById("numLletres").innerHTML = comptador;
+	var copia = a.slice();
+	for (var i = 0; i < copia.length; i++) {
+		if(copia[i] != copia[i].toLowerCase()){
+			console.log("Aqui hi ha hagut una transformacio: " + copia[i]);
+		}
+		copia[i] = copia[i].toLowerCase();
+	}
+
+	for (var i = 0; i < copia.length; i++) {
+		console.log(copia[i]);
+	}
+</script>
+</body>
+</html>

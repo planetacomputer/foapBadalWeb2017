@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	function toggleDiv(id) {
+	    var div = document.getElementById(id);
+	    if(div.style.visibility == 'hidden'){
+	    	div.style.visibility = 'visible';
+	    }
+	    else{
+	    	div.style.visibility = 'hidden';
+	    }
+	}
+
+    $("button").click(function(){
+        toggleDiv('paragraf');
+    });
+
+});
+</script>
+</head>
+<body>
+
+<p id="paragraf">Intermitent</p>
+
+<button>Click</button>
+
+</body>
+</html>

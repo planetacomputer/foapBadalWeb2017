@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="nom">El meu nom es Pepe</div>
+<button onclick="canvianom()">Canvia el nom</button>
+<script>
+	function canvianom(){
+		var str = document.getElementById("nom").innerHTML;
+		var res = str.replace("Pepe", "David");
+		document.getElementById("nom").innerHTML = res; 
+	}
+</script>
+</body>
+</html>

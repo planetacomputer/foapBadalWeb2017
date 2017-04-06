@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.coloret {
+	    background-color: blue;
+	    color: red;
+	}
+	p{
+		width: 100px;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    $("button").click(function(){
+    	$("p").text($("p").text().substring(0, $("p").text().length-1)) ;
+        $("p").toggleClass("coloret");
+
+    });
+});
+</script>
+</head>
+<body>
+
+<p>Intermitent</p>
+
+<button>Click</button>
+
+</body>
+</html>
