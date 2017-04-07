@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+	table {
+	    border-collapse:collapse;
+		border:1px solid #FF0000;
+		width: auto;
+		height: auto;
+	}
+	table td{
+		border:1px solid #FF0000;
+		max-width: auto;
+		background-color: "pink";
+		position: relative;
+	}
+
+	table td span{
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		font-size: 40%;
+	}
+
+	table td div{
+		float: none;
+		color: black;
+	}
+
+	.blue{
+		color: blue;
+	}
+
+	div{
+		float: right;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body class="w3-container">
+
+<script>
+	$(document).ready(function(){
+		var contador = 0;
+    	files = 4;//prompt("Nombre de files?");
+    	columnes = 3;//prompt("Nombre de columnes");
+    	var taula = $("<table></table>");
+    	sumatori = $("<div class='w3-badge w3-xxxlarge w3-padding w3-red'>0</div>");
+    	$("body").append(taula);
+    	taula.before(sumatori);
+    	for (var i = 0; i < files; i++) {
+			//console.log(i);
+			fila = taula.append("<tr></tr>");
+			for (var j = 0; j < columnes; j++) {
+				//console.log(j);
+				contador++;
+				var numero = contador;
+				console.log(numero);
+				casella = $("<td><div>0</div></td>");
+				fila.append(casella);
+				crearClick(casella, numero);
+			}
+    	}	
+
+
+
+    	
+	});
+
+		//setTimeout(function(){ casella.trigger('click'); }, 1000);
+
+	var successio = 1;
+	function crearClick(casella, numero){
+		casella.click(function(){
+			console.log("Hola el meu valor es " + numero);
+			//casella.remove();
+		});
+
+		casella.mouseover(function(){
+			if(successio <= parseInt(files)*parseInt(columnes) && $(this).text() == 0){
+				$(this).text(successio);
+				sumatori.text(successio);
+				successio++;
+			}
+		});
+
+		casella.hover(function(){
+	    	$(this).css("background-color", "yellow");
+	    	$(this).find('div').addClass("blue");
+	    	
+	    }, function(){
+	    	$(this).css("background-color", "pink");
+	    	$(this).find('div').removeClass("blue");
+		});
+	}
+</script>
+</body>
+</html>
