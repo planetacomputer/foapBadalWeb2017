@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	#quadre{
+		background-color: #CCC;
+		border: 1px solid #000;
+		width: 200px;
+		height: 200px;
+		float: right;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#quadre").mouseout(function(){
+        $.get("colors.json", function(data, status){
+        	longitud = parseInt(data.length);
+        	var indice = Math.floor(Math.random() * longitud);
+        	console.log(data[indice]);
+        	$("#quadre").css("background-color", data[indice]);
+
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP GET request to a page and get the result back</button>
+<div id="quadre"></div>
+</body>
+</html>
