@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1 {
+    width: 400px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+
+#back{
+	width: 480px;
+    height: 70px;
+    border: 1px solid black;
+}
+</style>
+<script>
+var counterIn = 0;
+function allowDrop(ev) {
+	console.log("allowDrop");
+	console.log(ev.clientX);
+    ev.preventDefault();
+}
+
+function drag(ev) {
+	ev.target.style.opacity = "0.1";
+	console.log("drag");
+	console.log(ev.target.id);
+	console.log(ev.clientX);
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+	console.log("drop");
+    ev.preventDefault();
+
+    var data = ev.dataTransfer.getData("text");
+    //ev.target.appendChild(document.getElementById(data));
+    if(ev.target.id == "div1" || ev.target.id == "back"){
+	    var a = ev.target.appendChild(document.getElementById(data));
+	    
+	    if(ev.target.id == "div1"){
+    		counterIn++;
+	    }
+	    else{
+	    	counterIn--;
+	    	
+	    }
+	    console.log(counterIn);
+	    document.getElementById("counterIn").innerHTML = counterIn;
+    }
+    document.getElementById(data).style.opacity = "1";
+
+}
+</script>
+</head>
+<body ondrop="drop(event)" ondragover="allowDrop(event)">
+ 
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="counterIn">0</div>
+<br>
+<div id="back" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="100" height="69">
+	<img id="drag2" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="100" height="69">
+	<img id="drag3" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="100" height="69">
+	<img id="drag4" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="100" height="69">
+</div>
+</body>
+</html>

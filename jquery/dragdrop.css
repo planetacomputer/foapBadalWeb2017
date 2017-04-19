@@ -1,0 +1,17 @@
+#cajaobjetivo{
+  float: left;
+  width: 500px;
+  height: 300px;
+  margin: 10px;
+  border: 1px solid #999999;
+}
+#cajaimagen{
+  float: left;
+  width: 320px;
+  margin: 10px;
+  border: 1px solid #999999;
+}
+#cajaimagen > img{
+  float: left;
+  padding: 5px;
+}
