@@ -6,7 +6,11 @@ function iniciar(){
  
   soltar = document.getElementById('cajaobjetivo');
   soltar.addEventListener('dragenter', function(e){ e.preventDefault(); console.log("dragenter")});
-  soltar.addEventListener('dragover', function(e){ e.preventDefault(); console.log("dragover")});
+  soltar.addEventListener('dragover', function(e){
+   e.preventDefault(); 
+   fuente1.style.width = "40px";
+   console.log("dragover");
+  });
   soltar.addEventListener('dragleave', function(e){ e.preventDefault(); console.log("dragleave")});
   soltar.addEventListener('drop', soltado);
 }

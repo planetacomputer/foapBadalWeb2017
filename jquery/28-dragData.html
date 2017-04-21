@@ -32,7 +32,7 @@ function drag(ev) {
 }
 
 function drop(ev) {
-	console.log("drop");
+	console.log("drop" + ev.target.id);
     ev.preventDefault();
 
     var data = ev.dataTransfer.getData("text");
@@ -41,10 +41,10 @@ function drop(ev) {
 	    var a = ev.target.appendChild(document.getElementById(data));
 	    
 	    if(ev.target.id == "div1"){
-    		counterIn++;
+    		counterIn = counterIn + 1;
 	    }
 	    else{
-	    	counterIn--;
+	    	counterIn = counterIn -1;
 	    	
 	    }
 	    console.log(counterIn);
