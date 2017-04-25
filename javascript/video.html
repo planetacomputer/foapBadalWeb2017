@@ -2,8 +2,9 @@
 <html> 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
-<body onload="init()"> 
+<body> 
 
 <div style="text-align:center"> 
   <button onclick="playPause()">Play/Pause</button> 
@@ -12,26 +13,30 @@
   <button onclick="makeSmall()">Small</button>
   <button onclick="makeNormal()">Normal</button>
   <br><br>
-  <video id="video1" width="420" loop onmouseover="this.pause()" onmouseout="this.play()">
+  <video id="video1" width="420" loop>
    <source id="source1" src="1.mp4" type="video/mp4">
    
     Your browser does not support HTML5 video.
   </video>
   <br>
-  <span id="videoA" data-video="3.mp4">Video1</span><span data-video="2.mp4">-Video2</span><span data-video="3.mp4">-Video3</span>
+  <span data-video="1.mp4">Video1</span><span data-video="2.mp4">-Video2</span><span data-video="3.mp4">-Video3</span>
 </div> 
 
 <script> 
 var myVideo; 
-function init(){
+$(document).ready(function(){
+  console.log("ready");
   myVideo = document.getElementById("video1"); 
   mySource = document.getElementById("source1"); 
-  document.getElementById("videoA").addEventListener("click", function(){
-    console.log("Video1");
-    mySource.src = this.getAttribute('data-video');
-    myVideo.load();
+  //Selector de span amb atribut data-video
+  $('span[data-video]').each( function(index) {
+      $(this).click( function() {
+          mySource.src = $(this).attr('data-video');
+          myVideo.load();
+          myVideo.play();
+      });
   });
-}
+});
 
 
 function playPause() { 
