@@ -10,8 +10,8 @@
 <body>
 	<?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+$nameErr = $emailErr = $genderErr = $websiteErr = $ageErr = "";
+$name = $email = $gender = $comment = $website = $age = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
@@ -21,6 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   		$nameErr = "Only letters and white space allowed"; 
 	}
     $name = test_input($_POST["name"]);
+  }
+
+  if (empty($_POST["age"])) {
+    $ageErr = "Age is required";
+  } else {
+    $age = test_input($_POST["age"]);
+    if($age < 18){
+    	$ageErr = "No under 18";
+    }
   }
 
   if (empty($_POST["email"])) {
@@ -55,10 +64,14 @@ function test_input($data) {
   return $data;
 }
 ?>
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<form class="right_aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 Name: <input type="text" name="name" value="<?php echo $_REQUEST['name'] ?>">
 <span class="error">* <?php echo $nameErr;?></span>
+<br><br>
+Age:
+<input type="number" name="age" value="<?php echo $_REQUEST['age'] ?>">
+<span class="error">* <?php echo $ageErr;?></span>
 <br><br>
 E-mail:
 <input type="text" name="email" value="<?php echo $_REQUEST['email'] ?>">
@@ -81,6 +94,10 @@ Gender:
 <?php
 echo "<h2>Your Input:</h2>";
 echo $name;
+echo "<br>";
+echo $age;
+echo "<br>";
+echo $gender;
 echo "<br>";
 echo $email;
 echo "<br>";

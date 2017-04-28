@@ -1,0 +1,1 @@
+<p>Copyright &copy; 1999-<?php echo date("Y") ?> W3Schools.com</p>
