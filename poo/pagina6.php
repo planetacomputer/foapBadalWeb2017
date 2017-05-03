@@ -4,8 +4,9 @@
 </head>
 <body>
 <?php
+include("celda.php");
 class Tabla {
-  private $mat=array();
+  private $mat=array(); //array bidimensional de celdas
   private $cantFilas;
   private $cantColumnas;
 
@@ -15,9 +16,9 @@ class Tabla {
     $this->cantColumnas=$co;
   }
 
-  public function cargar($fila,$columna,$valor)
+  public function cargar($fila,$columna,$celda)
   {
-    $this->mat[$fila][$columna]=$valor;
+    $this->mat[$fila][$columna]=$celda;
   }
 
   private function inicioTabla()
@@ -32,7 +33,7 @@ class Tabla {
 
   private function mostrar($fi,$co)
   {
-    echo '<td>'.$this->mat[$fi][$co].'</td>';
+    echo $this->mat[$fi][$co]->mostrarCelda();
   }
 
   private function finFila()
@@ -62,13 +63,21 @@ class Tabla {
 }
 
 $fils = 6;
-$cols = 8;
+$cols = 9;
 $contador = 1;
 $tabla1=new Tabla($fils,$cols);
-
+$colorParell = "#F00";
+$colorSenar = "#0F0";
+$colorAux = "";
 for($f=1; $f<=$fils; $f++){
   for($c=1; $c<=$cols; $c++){
-    $tabla1->cargar($f, $c, $contador); 
+    //Instanciar una celda
+    $colorAux = $colorSenar;
+    if($contador % 2 == 0){
+      $colorAux = $colorParell;
+    }
+    $celda = new Celda($contador, "#00F", $colorAux);
+    $tabla1->cargar($f, $c, $celda); 
     $contador++;
   }  
 }
