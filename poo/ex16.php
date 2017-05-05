@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-	abstract class Treballador{
+	 abstract class Treballador{
 		protected $nom;
   		protected $sou;
 
