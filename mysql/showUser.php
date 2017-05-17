@@ -5,6 +5,11 @@
 	<title>Usuari <?php echo $_GET["id"] ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+		.back{
+			margin-top: 10px;
+		}
+	</style>
 </head>
 <body>
 <?php
@@ -19,6 +24,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM MyGuests WHERE id = ".$_GET["id"]. " LIMIT 1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+$conn->close();
 ?>
 	<div class="w3-card-4">
 
@@ -41,7 +47,8 @@ $row = $result->fetch_assoc();
 		<footer class="w3-container w3-teal">
 		  <h5>Footer</h5>
 		</footer>
-
+	
 	</div>
+	<a href="listUsers.php" class="w3-btn w3-block w3-khaki back">Tornar al llistat</a>
 </body>
 </html>
