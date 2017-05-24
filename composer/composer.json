@@ -2,8 +2,8 @@
     "name": "joseluis/composer",
     "description": "Programa exemple de Compose",
     "require": {
-        "monolog/monolog": "^1.22",
-        "symfony/var-dumper": "^3.2"
+        "symfony/var-dumper": "^3.2",
+        "monolog/monolog": "^1.22"
     },
     "autoload": {
         "psr-4": {"Acme\\": "src/"}
