@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delicious Menu: meaters, veggies... - {{ parent() }}{% endblock %}
+{% block body %}
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+  
+    <div class="w3-row w3-center w3-card-2 w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Eat</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">Drink</div>
+      </a>
+    </div>
+    {% block producte %}
+      <div id="Eat" class="w3-container menu w3-padding-48 w3-card-2">
+        {% for item in menu %}
+            {% if item.eatdrink %}
+              <h5>{{ item.nom }}</h5>
+              <p class="w3-text-grey">{{ item.descripcio }} {{ item.preu }}</p><br>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      <div id="Drinks" class="w3-container menu w3-padding-48 w3-card-2">
+        {% for item in menu %}
+            {% if item.eatdrink == 0 %}
+              <h5>{{ item.nom }}</h5>
+              <p class="w3-text-grey">{{ item.descripcio }} {{ item.preu }}</p><br>
+            {% endif %}
+        {% endfor %}
+      </div>  
+    {% endblock %}
+    <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
+  </div>
+</div>
+
+{% for i in 1..10 %}
+    <div class="{{ cycle(['even', 'odd'], i) }}">
+      Variable valor de i: {{i}}
+    </div>
+{% endfor %}
+{% endblock %}
