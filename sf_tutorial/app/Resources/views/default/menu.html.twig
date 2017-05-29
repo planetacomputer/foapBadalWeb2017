@@ -16,12 +16,13 @@
         <div class="w3-col s6 tablink">Drink</div>
       </a>
     </div>
-    {% block producte %}
       <div id="Eat" class="w3-container menu w3-padding-48 w3-card-2">
         {% for item in menu %}
             {% if item.eatdrink %}
-              <h5>{{ item.nom }}</h5>
+              <div class="{{ cycle(['even', 'odd'], loop.index) }}">
+              <h5><a href="{{ path('menu_show', {'id': item.id}) }}">{{ item.nom }}</a></h5>
               <p class="w3-text-grey">{{ item.descripcio }} {{ item.preu }}</p><br>
+              </div>
             {% endif %}
         {% endfor %}
       </div>
@@ -29,19 +30,14 @@
       <div id="Drinks" class="w3-container menu w3-padding-48 w3-card-2">
         {% for item in menu %}
             {% if item.eatdrink == 0 %}
-              <h5>{{ item.nom }}</h5>
+              <div class="{{ cycle(['even', 'odd'], loop.index) }}">
+              <h5><a href="{{ path('menu_show', {'id': item.id}) }}">{{ item.nom }}</a></h5>
               <p class="w3-text-grey">{{ item.descripcio }} {{ item.preu }}</p><br>
+              </div>
             {% endif %}
         {% endfor %}
       </div>  
-    {% endblock %}
     <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
 </div>
-
-{% for i in 1..10 %}
-    <div class="{{ cycle(['even', 'odd'], i) }}">
-      Variable valor de i: {{i}}
-    </div>
-{% endfor %}
 {% endblock %}

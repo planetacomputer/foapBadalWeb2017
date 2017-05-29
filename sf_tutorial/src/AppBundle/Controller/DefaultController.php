@@ -63,7 +63,14 @@ class DefaultController extends Controller
      *  @Route("/menu/{id}", name="menu_show", requirements={"id": "\d+"})
      */
     public function showMenu(Request $request){
-        echo $request->get('id');
-        return $this->render('default/menuProducte.html.twig');
+        $id = $request->get('id');
+        $dbh = new \PDO("mysql:host=localhost;dbname=".$this->container->getParameter('database_name'),$this->container->getParameter('database_user'), $this->container->getParameter('database_password'), array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+        $sql = "SELECT * FROM menu WHERE id = :id";
+        $query = $dbh->prepare($sql);
+        $query -> bindParam(':id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        $producte=$query->fetch(\PDO::FETCH_OBJ);
+
+        return $this->render('default/menuProducte.html.twig', array('producte' => $producte));
     }
 }
